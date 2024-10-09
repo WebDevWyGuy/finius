@@ -1,16 +1,16 @@
-import PocketBase from 'pocketbase';
+import PocketBase from "pocketbase";
 
-const pb = new PocketBase('https://finius.pockethost.io');
+const pb = new PocketBase("https://finius.pockethost.io");
 
 export const login = async (email: string, password: string) => {
   const authData = await pb
-    .collection('users')
+    .collection("users")
     .authWithPassword(email, password);
-  localStorage.setItem('pocketbase_auth', JSON.stringify(authData));
+  localStorage.setItem("pocketbase_auth", JSON.stringify(authData));
 };
 
 export const register = async (email: string, password: string) => {
-  const user = await pb.collection('users').create({
+  await pb.collection("users").create({
     email,
     password,
     passwordConfirm: password,
@@ -20,7 +20,7 @@ export const register = async (email: string, password: string) => {
 
 export const logout = () => {
   pb.authStore.clear();
-  localStorage.removeItem('pocketbase_auth');
+  localStorage.removeItem("pocketbase_auth");
 };
 
 export const isAuthenticated = () => {
