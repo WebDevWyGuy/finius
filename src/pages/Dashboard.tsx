@@ -38,7 +38,6 @@ const DashboardHome: React.FC = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-[#332]">
-            {/* Add sample transactions here */}
             <tr>
               <td className="px-6 py-4 whitespace-nowrap">2023-04-15</td>
               <td className="px-6 py-4">Grocery Shopping</td>

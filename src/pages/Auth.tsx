@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Lock } from "lucide-react";
-import { login, register } from "../utils/auth";
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Lock } from 'lucide-react';
+import { login, register } from '../utils/auth';
 
 const AuthPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [email, setEmail] = useState("asdf@test.com");
-  const [password, setPassword] = useState("}hT+@x3M8Bd9");
+  const [email, setEmail] = useState('asdf@test.com');
+  const [password, setPassword] = useState('}hT+@x3M8Bd9');
 
   const navigate = useNavigate();
-  const location = useLocation(); // Capture the location state
-  const redirectTo = (location.state as { redirectTo?: string })?.redirectTo; // Safely extract redirectTo
+  const location = useLocation();
+  const redirectTo = (location.state as { redirectTo?: string })?.redirectTo;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,10 +21,10 @@ const AuthPage: React.FC = () => {
         await register(email, password);
       }
 
-      navigate(redirectTo ?? "/dashboard", { replace: true });
+      navigate(redirectTo ?? '/dashboard', { replace: true });
     } catch (error) {
-      console.error("Authentication error:", error);
-      alert("Authentication failed. Please try again.");
+      console.error('Authentication error:', error);
+      alert('Authentication failed. Please try again.');
     }
   };
 
@@ -35,7 +35,7 @@ const AuthPage: React.FC = () => {
           <Lock size={48} className="text-dark-primary" />
         </div>
         <h2 className="text-2xl font-bold mb-6 text-center text-dark-text">
-          {isLogin ? "Login" : "Register"}
+          {isLogin ? 'Login' : 'Register'}
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -74,16 +74,16 @@ const AuthPage: React.FC = () => {
             type="submit"
             className="w-full bg-dark-primary text-dark-bg py-2 rounded-lg hover:bg-opacity-90 transition duration-300"
           >
-            {isLogin ? "Login" : "Register"}
+            {isLogin ? 'Login' : 'Register'}
           </button>
         </form>
         <p className="mt-4 text-center text-dark-text">
-          {isLogin ? "Don't have an account?" : "Already have an account?"}
+          {isLogin ? "Don't have an account?" : 'Already have an account?'}
           <button
             className="text-dark-primary font-semibold ml-1"
             onClick={() => setIsLogin(!isLogin)}
           >
-            {isLogin ? "Register" : "Login"}
+            {isLogin ? 'Register' : 'Login'}
           </button>
         </p>
       </div>
